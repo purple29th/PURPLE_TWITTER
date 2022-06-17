@@ -23,6 +23,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     Context context;
     List<Tweet> tweets;
 
+    private static int ImageCornerRadius = 30;
+
     public TweetsAdapter(Context context, List<Tweet> tweets) {
         this.context = context;
         this.tweets = tweets;
@@ -96,9 +98,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
             tvTime.setText(tweet.relTime);
-            int radius = 30;
             if (tweet.has_media) {
-                Glide.with(context).load(tweet.media_url).centerInside().transform(new RoundedCorners(radius)).into(ivMedia);
+                Glide.with(context).load(tweet.media_url).centerInside().transform(new RoundedCorners(TweetsAdapter.ImageCornerRadius)).into(ivMedia);
                 ivMedia.setVisibility(View.VISIBLE);
             } else {
                 ivMedia.setVisibility(View.GONE);
