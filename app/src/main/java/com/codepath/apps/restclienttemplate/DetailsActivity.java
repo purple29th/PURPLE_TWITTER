@@ -13,8 +13,8 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 import org.parceler.Parcels;
 
 public class DetailsActivity extends AppCompatActivity {
-    ImageView dtview;
-    TextView tvview;
+    ImageView ivImage;
+    TextView tvText;
 
 
     @Override
@@ -22,13 +22,13 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        dtview = findViewById(R.id.dtimageView);
-        tvview = findViewById(R.id.dtView);
+        ivImage = findViewById(R.id.ivImage);
+        tvText = findViewById(R.id.tvText);
 
         Tweet tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
 
-        tvview.setText(tweet.body);
-        Glide.with(DetailsActivity.this).load(tweet.user.profileImageUrl).into(dtview);
+        tvText.setText(tweet.body);
+        Glide.with(DetailsActivity.this).load(tweet.user.profileImageUrl).into(ivImage);
 
 
 
